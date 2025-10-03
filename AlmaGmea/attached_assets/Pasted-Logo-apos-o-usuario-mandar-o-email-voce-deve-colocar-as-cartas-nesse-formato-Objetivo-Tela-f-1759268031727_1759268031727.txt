@@ -1,0 +1,71 @@
+Logo apos o usuario mandar o email, voce deve colocar as cartas nesse formato...
+
+Objetivo:
+- Tela full-screen (100vw x 100vh) com 12–20 cartas de tarot “espalhadas” aleatoriamente pelo viewport.
+- Estética inspirada no estilo pink/black da imagem de referência (tarot punk: fundo claro texturizado leve, cartas magenta/rosa sobre preto).
+- Usuário deve selecionar exatamente 3 cartas. Um contador e CTA só ativam quando 3 cartas forem escolhidas.
+
+Requisitos de UX/UI:
+1) Layout
+   - Container absoluto cobrindo a tela, sem scroll, responsivo.
+   - “Espalhar” cartas com posições e rotações aleatórias (top/left + transform: rotate()) mantendo 8px de margem da borda.
+   - As cartas não devem se sobrepor de forma extrema: aplique leve distribuição por “zonas” (quatro quadrantes) antes de sortear posições; ajuste se colidir.
+   - No topo, uma barra fina de progresso e textos:
+     Título: “Escolha 3 cartas do Tarot”
+     Sub: “Deixe sua intuição guiar suas escolhas”
+     Contador: “0 de 3 selecionadas” (atualiza dinamicamente)
+2) Cartas
+   - Cada carta é um <button> (para acessibilidade) com:
+     • estado normal: leve sombra, rotação randômica (-8° a 8°)
+     • hover: efeito parallax/tilt sutil (transform)
+     • foco (keyboard): outline visível
+     • selecionada: brilho/outline magenta, escala 1.05 e z-index maior
+   - Clique alterna o estado selecionado, com limite máximo de 3. Ao tentar selecionar a 4ª, exibir toast discreto “Selecione no máximo 3 cartas”.
+   - Imagens da face: use uma lista de URLs (placeholder). Se não houver, gere com a mesma imagem para todas (mostre como trocar).
+   - Verso da carta: padrão dark com traço magenta e tipografia “TAROT”.
+3) CTA
+   - Botão fixo no rodapé (ou sticky bottom), texto: “Revelar cartas”.
+   - Inicia desabilitado; habilita apenas com 3 selecionadas; clique retorna (console.log) um array com IDs/URLs das 3 cartas e mostra um modal simples com “Cartas selecionadas: …”.
+4) Acessibilidade & Mobile
+   - Navegável por teclado (Tab/Enter) e leitor de tela (aria-pressed para selecionada).
+   - Performance mobile: use will-change no hover/transform; limite sombras pesadas.
+   - Touch-friendly (área de clique ≥ 44px).
+5) Estilo visual
+   - Paleta: #ff2e88 (magenta), #111 (preto), #f5f0e9 (fundo off-white), cinzas neutros para tipografia.
+   - Fonte: “Cinzel” para títulos e “Inter” para textos (via Google Fonts).
+   - Toque de textura sutil no background (data-URL CSS ou linear-gradient com noise leve).
+6) Código limpo
+   - Um arquivo index.html, styles.css, app.js.
+   - app.js organizado: setup(), scatterCards(), bindCardEvents(), updateCounter(), showToast(), openModal().
+   - Sem dependências externas além das fontes.
+   - Comentários explicando como trocar as imagens das cartas.
+
+Dados/Placeholders:
+- No topo do app.js, declare:
+  const CARD_IMAGES = [
+    "https://…/tarot-moon.jpg",
+    "https://…/tarot-judgement.jpg",
+    "https://…/tarot-star.jpg",
+    "https://…/tarot-sun.jpg",
+    "https://…/tarot-world.jpg"
+  ];
+  // Se a lista tiver menos de 12, repita/embaralhe até 16.
+- Cada carta recebe id único (card-1, card-2, …) e data-src com a URL.
+
+Regras de seleção:
+- Máx. 3 selecionadas.
+- Contador: “X de 3 selecionadas”.
+- CTA: desabilitado com tooltip “Selecione 3 cartas”.
+- Ao clicar “Revelar cartas”: mostrar modal central com thumbnails/nomes; fechar com ESC, overlay ou botão “Fechar”.
+
+Extras (opcionais mas desejados):
+- Botão “Embaralhar novamente” no topo-direito que re-sorteia posições/rotações das cartas sem recarregar a página.
+- Animação de entrada das cartas com stagger (opacity + translateY).
+- Prevenção de sobreposição severa: se a interseção entre bounding boxes ultrapassar 30%, reposicione uma das cartas.
+
+Entregáveis:
+- index.html (estrutura, fontes, barra superior, container de cartas, CTA, modal, toast)
+- styles.css (tema, responsividade, estados, animações)
+- app.js (lógica completa: scatter, seleção, acessibilidade, modal, embaralhar, contador)
+- Comentários finais no README dentro do index (comentário HTML) explicando como:
+  (1) trocar imagens, (2) ajustar quantidade de cartas, (3) mudar paleta.

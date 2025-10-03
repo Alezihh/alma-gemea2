@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Paleta Mística Vibrante - Amor */
+  --background: hsl(270 40% 12%);
+  --foreground: hsl(45 100% 95%);
+  --card: hsl(280 35% 18%);
+  --card-foreground: hsl(45 100% 95%);
+  --popover: hsl(280 35% 18%);
+  --popover-foreground: hsl(45 100% 95%);
+  --primary: hsl(330 85% 55%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(270 70% 55%);
+  --secondary-foreground: hsl(0 0% 100%);
+  --muted: hsl(270 30% 25%);
+  --muted-foreground: hsl(45 60% 75%);
+  --accent: hsl(35 100% 60%);
+  --accent-foreground: hsl(270 40% 12%);
+  --destructive: hsl(0 84% 60%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(280 40% 35%);
+  --input: hsl(280 35% 22%);
+  --ring: hsl(330 85% 55%);
+  --chart-1: hsl(330 85% 55%);
+  --chart-2: hsl(270 70% 55%);
+  --chart-3: hsl(35 100% 60%);
+  --chart-4: hsl(310 75% 60%);
+  --chart-5: hsl(250 70% 60%);
+  --sidebar: hsl(280 35% 18%);
+  --sidebar-foreground: hsl(45 100% 95%);
+  --sidebar-primary: hsl(330 85% 55%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(270 30% 25%);
+  --sidebar-accent-foreground: hsl(330 85% 55%);
+  --sidebar-border: hsl(280 40% 35%);
+  --sidebar-ring: hsl(330 85% 55%);
+  --font-sans: Inter;
+  --font-serif: Cinzel, Playfair Display;
+  --font-mono: Architects Daughter;
+  --radius: 1rem;
+}
+
+.dark {
+  --background: hsl(270 40% 8%);
+  --foreground: hsl(45 100% 92%);
+  --card: hsl(280 35% 12%);
+  --card-foreground: hsl(45 100% 92%);
+  --popover: hsl(280 35% 12%);
+  --popover-foreground: hsl(45 100% 92%);
+  --primary: hsl(330 90% 60%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(270 75% 60%);
+  --secondary-foreground: hsl(0 0% 100%);
+  --muted: hsl(270 30% 18%);
+  --muted-foreground: hsl(45 60% 70%);
+  --accent: hsl(35 100% 65%);
+  --accent-foreground: hsl(270 40% 8%);
+  --destructive: hsl(0 84% 60%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(280 40% 25%);
+  --input: hsl(280 35% 16%);
+  --ring: hsl(330 90% 60%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    background: linear-gradient(135deg, hsl(270 40% 12%) 0%, hsl(280 50% 15%) 50%, hsl(290 45% 18%) 100%);
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .gradient-bg {
+    background: linear-gradient(135deg, hsl(330 85% 45%) 0%, hsl(270 70% 45%) 50%, hsl(35 100% 50%) 100%);
+  }
+  
+  .mystic-gradient {
+    background: linear-gradient(135deg, hsl(270 60% 25%) 0%, hsl(280 50% 30%) 50%, hsl(330 60% 30%) 100%);
+  }
+  
+  .love-gradient {
+    background: linear-gradient(135deg, hsl(330 85% 55%) 0%, hsl(310 75% 50%) 50%, hsl(270 70% 50%) 100%);
+  }
+  
+  .romantic-shadow {
+    box-shadow: 0 20px 50px rgba(219, 39, 119, 0.3), 0 10px 25px rgba(168, 85, 247, 0.2);
+  }
+  
+  .mystic-glow {
+    box-shadow: 0 0 30px rgba(219, 39, 119, 0.5), 0 0 60px rgba(168, 85, 247, 0.3), 0 0 90px rgba(251, 191, 36, 0.2);
+  }
+  
+  .glass-effect {
+    backdrop-filter: blur(12px);
+    background: rgba(88, 28, 135, 0.25);
+    border: 1px solid rgba(219, 39, 119, 0.3);
+  }
+
+  .dark .glass-effect {
+    background: rgba(59, 7, 100, 0.3);
+    border: 1px solid rgba(219, 39, 119, 0.4);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(330 85% 65%) 0%, hsl(270 70% 65%) 50%, hsl(35 100% 65%) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes flipCard {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(180deg); }
+}
+
+@keyframes mysticalPulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(219, 39, 119, 0.4), 0 0 40px rgba(168, 85, 247, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(219, 39, 119, 0.6), 0 0 80px rgba(168, 85, 247, 0.5), 0 0 120px rgba(251, 191, 36, 0.3);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+.animate-heart-beat {
+  animation: heartBeat 1.5s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 4s linear infinite;
+}
+
+.animate-mystical-pulse {
+  animation: mysticalPulse 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.3), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Tarot Card Flip Effect */
+.tarot-card {
+  perspective: 1000px;
+  width: 100%;
+  height: 220px;
+  transform-origin: center center;
+}
+
+.tarot-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.tarot-card.flipped .tarot-card-inner {
+  transform: rotateY(180deg);
+}
+
+.tarot-card-front,
+.tarot-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tarot-card-front {
+  transform: rotateY(180deg);
+}
+
+.tarot-card-back {
+  background: linear-gradient(135deg, hsl(270 60% 25%) 0%, hsl(280 50% 30%) 100%);
+  border: 3px solid hsl(35 100% 60%);
+  box-shadow: 0 4px 20px rgba(219, 39, 119, 0.4), inset 0 0 30px rgba(168, 85, 247, 0.2);
+}
